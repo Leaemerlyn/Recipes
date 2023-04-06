@@ -1,0 +1,6 @@
+.recipe-list{
+    height: 78vh;
+    padding: 0px 12px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

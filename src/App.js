@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import { Button, Header } from 'semantic-ui-react';
 import './App.css';
+import { Ingredients } from './Ingredients';
+import { RecipeInfo } from './RecipeInfo';
+import { RecipesMenu } from './RecipesMenu';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div id="app-container">
+      <div id="left-hand">
+        <div id="left-head"><h3 id="my-recipe">My Recipes</h3><Button icon="add" size='mini'/></div>
+        <RecipesMenu/>
+        <Button.Group className='mode'>
+            <Button>Edit</Button>
+            <Button>View</Button>
+        </Button.Group>
+      </div>
+      <div id="center">
+        <RecipeInfo/>
+      </div>
+      <div id="right-hand">
+        <Ingredients/>
+
+      </div>
+
     </div>
+    </>
   );
 }
 
