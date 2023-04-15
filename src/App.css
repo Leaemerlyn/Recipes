@@ -7,6 +7,8 @@
 #left-hand{
   margin: 28px;
   flex: 1;
+  padding: 12px;
+  border-radius: 5px;
 }
 
 #right-hand{
@@ -16,6 +18,10 @@
 
 #center{
   flex: 3;
+}
+
+#deleteRecipe{
+  margin: 0px 28px;
 }
 
 .mode{

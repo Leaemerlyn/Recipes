@@ -1,36 +1,23 @@
 import { Container } from "semantic-ui-react";
 import { Menu } from "semantic-ui-react";
-import { Button } from "semantic-ui-react";
 import "./RecipesMenu.css"
 
+export function RecipesMenu({recipeList, activeRecipeIndex, setActiveRecipeIndex}){
 
-export function RecipesMenu(){
+    const handleMenuItemClick = (index) => {
+        setActiveRecipeIndex(index);
+    }
+
+    const generateRecipeList = () => {
+        return (recipeList.map((recipe, index) => 
+        <Menu.Item name={recipe} active={activeRecipeIndex === index} onClick={() => {handleMenuItemClick(index)}}/>))
+    }
+
     return(
         <>
         <Container textAlign="left" fluid className="recipe-list">
             <Menu secondary vertical>
-                <Menu.Item name="french onion soup" active/>
-                <Menu.Item name="pasta" link/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="pasta"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="pasta"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
-                <Menu.Item name="rice"/>
+                {generateRecipeList()}
             </Menu>
         </Container>
         </>
