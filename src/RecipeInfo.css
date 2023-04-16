@@ -3,6 +3,10 @@
     padding: 28px;
 }
 
-.form{
+.recipe-box{
     margin: 24px 0px;
+}
+
+#add-tag{
+    display: inline-block;
 }

@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react'
-import { Button, Header } from 'semantic-ui-react';
+import { Button, Icon} from 'semantic-ui-react';
 import './App.css';
 import { Ingredients } from './Ingredients';
 import { RecipeInfo } from './RecipeInfo';
@@ -7,8 +7,22 @@ import { RecipesMenu } from './RecipesMenu';
 
 function App() {
   const [isView, setIsView] = useState(true);
-  const [recipeList, setRecipeList] = useState(["French Onion Soup", "Pasta"]);
+  const [recipeList, setRecipeList] = useState(["French Onion Soup hahahhahahha", "Pasta"]);
   const [activeRecipeIndex, setActiveRecipeIndex] = useState(0);
+  const [allRecipes, setAllRecipes] = useState([
+    {
+      name: "New Recipe",
+      ingredients: {name: "New Ingredients", amount: "Amount"},
+      labels: ["Add A Label"],
+      steps: "Create a new recipe! Click on the title to edit the recipe name"
+    },
+    {
+      name: "French Onion Soup",
+      ingredients: {name: "Onion", amount: "1 cup"},
+      labels: ["30 minutes", "quick"],
+      steps: "Here are some steps"
+    }
+  ])
 
   const handleAddRecipe = () => {
     setRecipeList([...recipeList, "New Recipe"])
@@ -32,9 +46,9 @@ function App() {
         </div>
         <RecipesMenu recipeList={recipeList} activeRecipeIndex={activeRecipeIndex} setActiveRecipeIndex={setActiveRecipeIndex}/>
 
-        <Button.Group className='mode'>
-            <Button active = {!isView} onClick={() => setIsView(false)}>Edit</Button>
-            <Button active = {isView} onClick={() => setIsView(true)}>View</Button>
+        <Button.Group className='mode' color='teal'>
+            <Button active = {!isView} onClick={() => setIsView(false)}><Icon name="edit outline"/>Edit</Button>
+            <Button active = {isView} onClick={() => setIsView(true)}><Icon name="food"/>View</Button>
         </Button.Group>
       </div>
 
