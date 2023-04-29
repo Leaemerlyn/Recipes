@@ -3,7 +3,6 @@ import { Menu } from "semantic-ui-react";
 import "./RecipesMenu.css"
 
 export function RecipesMenu({recipeList, activeRecipeIndex, setActiveRecipeIndex}){
-
     const handleMenuItemClick = (index) => {
         setActiveRecipeIndex(index);
     }

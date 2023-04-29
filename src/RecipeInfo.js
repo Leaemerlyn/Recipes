@@ -1,26 +1,26 @@
 import { Button, Container, Header, Icon, Label, Form, Visibility, Input } from "semantic-ui-react";
 import "./RecipeInfo.css"
-import { useState } from "react";
+import { useState} from "react";
 
-export function RecipeInfo ({isView}){
-    const [tags, setTags] = useState(["30 mins", "4 mins"]);
-    const [stepValue, setStepValue] = useState("Recipe here is great hahaha");
+export function RecipeInfo ({isView, setActiveRecipeData, setActiveRecipeName, activeRecipeData}){
     const [isAddingNewTag, setIsAddingNewTag] = useState(false);
     const [tagValue, setTagValue] = useState("Press enter to add");
-    const [recipeTitle, setRecipeTitle] = useState("French Onion Soup")
+    const setTags = (tags) => {
+        setActiveRecipeData({...activeRecipeData, labels: tags})
+    }
 
     const generateRecipeSteps = () => {
-        return (<p style={{whiteSpace: "pre-line"}}>{stepValue.toString()}</p>)
+        return (<p style={{whiteSpace: "pre-line"}}>{activeRecipeData.steps.toString()}</p>)
     }
 
     // tags
     const generateTags = () =>{
         if (isView){
-            return (tags.map((tag) => 
+            return (activeRecipeData.labels.map((tag) => 
             <Label> {tag}</Label>
         ))
         } else{
-            return(tags.map((tag, index) => 
+            return(activeRecipeData.labels.map((tag, index) => 
             <Label removeIcon="delete" onRemove={() => handleRemoveTag(index)} content={tag}/>
         ))
         }
@@ -36,23 +36,23 @@ export function RecipeInfo ({isView}){
 
     const handleSubmit = () => {
         isAddingNewTag? setIsAddingNewTag(false) : setIsAddingNewTag(true);
-        setTags([...tags, tagValue])
+        setTags([...activeRecipeData.labels, tagValue]);
         setTagValue("press enter to add");
     }
 
     const handleRemoveTag = (index) => {
-        setTags(tags.toSpliced(index, 1));
+        setTags(activeRecipeData.labels.toSpliced(index, 1));
     }
 
     //Title
     const handleTitleChange = (event, data) => {
-        setRecipeTitle(data.value);
+        setActiveRecipeName(data.value);
     }
     
     return(
         <>
         <Container className="recipe-info" fluid>
-            {isView? <Header as="h2" fluid>{recipeTitle}</Header>: <Input as="h2" fluid value={recipeTitle} size="huge" transparent onChange={handleTitleChange}/>}
+            {isView? <Header as="h2" fluid>{activeRecipeData.name}</Header>: <Input as="h2" fluid value={activeRecipeData.name} size="huge" transparent onChange={handleTitleChange}/>}
             <Label.Group size="medium">
                 {generateTags()}
                 {!isView && !isAddingNewTag ? <Button icon="add" size="mini" compact circular onClick={handleAddTags}/> : <></>}
@@ -67,7 +67,7 @@ export function RecipeInfo ({isView}){
             {isView ? 
                 generateRecipeSteps() :
                 <Form className="recipe-box">
-                    <Form.TextArea value={stepValue} onChange={(event, data) => setStepValue(data.value)} rows={15}/>
+                    <Form.TextArea value={activeRecipeData.steps} onChange={(event, data) => setActiveRecipeData({...activeRecipeData, steps: data.value})} rows={15}/>
                 </Form>}
         </Container>
 
