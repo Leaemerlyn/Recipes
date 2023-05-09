@@ -1,4 +1,4 @@
-import { Button, Container, Header, Icon, Label, Form, Visibility, Input } from "semantic-ui-react";
+import { Button, Container, Header, Label, Form, Input } from "semantic-ui-react";
 import "./RecipeInfo.css"
 import { useState} from "react";
 

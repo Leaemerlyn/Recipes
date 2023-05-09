@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { act } from "react-dom/test-utils";
+import { useState } from "react";
 import { Button, List, Form } from "semantic-ui-react";
 
 export function Ingredients ({isView, setActiveRecipeData, activeRecipeData}){

@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from 'react'
-import { Button, Icon, Menu, Segment} from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react'
+import { Button, Icon, Menu } from 'semantic-ui-react';
 import './App.css';
 import { Ingredients } from './Ingredients';
 import { RecipeInfo } from './RecipeInfo';
@@ -70,7 +70,7 @@ function App() {
   return (
     <>
     <Menu pointing size='small'>
-      <Menu.Item><img src="favicon.ico"/></Menu.Item>
+      <Menu.Item></Menu.Item>
       <Menu.Item active={recipePage} link onClick={() => setRecipePage(true)}>Recipe Book</Menu.Item>
       <Menu.Item active={!recipePage} link onClick={() => setRecipePage(false)}>About</Menu.Item>
     </Menu>
